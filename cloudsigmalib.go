@@ -10,6 +10,8 @@ import (
 type Cloud struct {
 	Location  string
 	BasicAuth *BasicAuth
+	//Servers   *Servers
+	//Drives    *Drives
 }
 
 type BasicAuth struct {
@@ -59,9 +61,17 @@ func (c *Cloud) GetBalance() ([]byte, error) {
 	return c.sendRequest(args)
 }
 
-func (c *Cloud) ListServers() ([]byte, error) {
-	o := cloudsigma.NewServers()
-	args := o.NewList()
+func (c *Cloud) NewServers() *cloudsigma.Servers {
+	s := cloudsigma.NewServers() // returns server, with args prop
+	return s
+}
+
+type Lister interface {
+	NewList() *cloudsigma.Args
+}
+
+func (c *Cloud) List(listable Lister) ([]byte, error) {
+	args := listable.NewList()
 	args = c.setAuth(args)
 	args.Location = c.Location
 	return c.sendRequest(args)

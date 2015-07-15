@@ -1,8 +1,8 @@
 # cloudsigmalib
 
-A clean api for the cloudsigma core project.
+A simple, clean wrapper api for the cloudsigma core project.
 
-![Progress](http://progressed.io/bar/2?title=pre-alpha)
+![Progress](http://progressed.io/bar/2?title=alpha)
 [![Build Status](https://travis-ci.org/russmack/cloudsigmalib.svg?branch=master)](https://travis-ci.org/russmack/cloudsigmalib)
 
 ---

@@ -28,7 +28,8 @@ func main() {
 	}
 	fmt.Println("Response:", string(resp))
 
-	resp, err = cloud.ListServers()
+	servers := cloud.NewServers()
+	resp, err = cloud.List(servers)
 	if err != nil {
 		fmt.Println(err)
 		return
