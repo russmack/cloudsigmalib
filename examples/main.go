@@ -29,11 +29,18 @@ func main() {
 	fmt.Println("Response:", string(resp))
 
 	servers := cloud.NewServers()
-	resp, err = cloud.List(servers)
+	resp, err = servers.List()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	fmt.Println("Response:", string(resp))
 
+	server := cloud.NewServer()
+	resp, err = server.Create("Test server 123", 1000, 536870912, "thisispass")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("Response:", string(resp))
 }
