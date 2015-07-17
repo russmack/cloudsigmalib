@@ -102,10 +102,109 @@ func (s *Servers) List() ([]byte, error) {
 }
 
 func (s *Server) Create(name string, cpu int, memory int, vncPassword string) ([]byte, error) {
-	ns := cloudsigma.ServerRequest{Name: name, Cpu: cpu, Memory: memory, VncPassword: vncPassword}
-	nsList := []cloudsigma.ServerRequest{ns}
+	o := cloudsigma.ServerRequest{Name: name, Cpu: cpu, Memory: memory, VncPassword: vncPassword}
+	l := []cloudsigma.ServerRequest{o}
 	cs := cloudsigma.NewServers()
-	args := cs.NewCreate(nsList)
+	args := cs.NewCreate(l)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+func (s *Server) Delete(uuid string) ([]byte, error) {
+	cs := cloudsigma.NewServers()
+	args := cs.NewDelete(uuid)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+func (s *Server) Start(uuid string) ([]byte, error) {
+	cs := cloudsigma.NewServers()
+	args := cs.NewStart(uuid)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+func (s *Server) Stop(uuid string) ([]byte, error) {
+	cs := cloudsigma.NewServers()
+	args := cs.NewStop(uuid)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+func (s *Server) Shutdown(uuid string) ([]byte, error) {
+	cs := cloudsigma.NewServers()
+	args := cs.NewShutdown(uuid)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+type Drives struct{}
+type Drive struct{}
+
+func (c *Cloud) NewDrives() *Drives {
+	return &Drives{}
+}
+
+func (c *Cloud) NewDrive() *Drive {
+	return &Drive{}
+}
+
+func (d *Drives) List() ([]byte, error) {
+	cs := cloudsigma.NewDrives()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+func (s *Drive) Create(name string, size int, media string) ([]byte, error) {
+	o := cloudsigma.DriveRequest{Media: media, Name: name, Size: size}
+	l := []cloudsigma.DriveRequest{o}
+	cs := cloudsigma.NewDrives()
+	args := cs.NewCreate(l)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+func (s *Drive) Delete(uuid string) ([]byte, error) {
+	cs := cloudsigma.NewDrives()
+	args := cs.NewDelete(uuid)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+type CurrentUsage struct{}
+
+func (c *Cloud) NewCurrentUsage() *CurrentUsage {
+	return &CurrentUsage{}
+}
+
+func (u *CurrentUsage) List() ([]byte, error) {
+	cs := cloudsigma.NewCurrentUsage()
+	args := cs.NewList()
 	args, err := cloud.setArgs(args)
 	if err != nil {
 		return nil, err
