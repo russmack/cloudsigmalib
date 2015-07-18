@@ -3,9 +3,18 @@ package main
 import (
 	"fmt"
 	"github.com/russmack/cloudsigmalib"
+	"os"
 )
 
 func main() {
+	config := cloudsigmalib.NewConfig()
+	_, err := config.Load()
+	if err != nil {
+		fmt.Println("Unable to load config.", err)
+		os.Exit(1)
+	}
+	login := config.Login()
+
 	cloud, err := cloudsigmalib.NewCloud("zrh")
 	if err != nil {
 		fmt.Println(err)
@@ -20,7 +29,7 @@ func main() {
 	}
 	fmt.Println("\n\nResponse:", string(resp))
 
-	cloud.BasicAuth = &cloudsigmalib.BasicAuth{"my@email", "mypass"}
+	cloud.BasicAuth = &cloudsigmalib.BasicAuth{login.Username, login.Password}
 	resp, err = cloud.GetBalance()
 	if err != nil {
 		fmt.Println(err)
