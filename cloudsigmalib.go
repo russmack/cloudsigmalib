@@ -57,8 +57,28 @@ func (c *Cloud) setAuth(args *cloudsigma.Args) *cloudsigma.Args {
 	return args
 }
 
+func (c *Cloud) GetCloudStatus() ([]byte, error) {
+	o := cloudsigma.NewCloudStatus()
+	args := o.NewList()
+	args, err := c.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return c.sendRequest(args)
+}
+
 func (c *Cloud) GetLocations() ([]byte, error) {
 	o := cloudsigma.NewLocations()
+	args := o.NewList()
+	args, err := c.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return c.sendRequest(args)
+}
+
+func (c *Cloud) GetCapabilities() ([]byte, error) {
+	o := cloudsigma.NewCapabilities()
 	args := o.NewList()
 	args, err := c.setArgs(args)
 	if err != nil {

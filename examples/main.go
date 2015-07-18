@@ -29,7 +29,22 @@ func main() {
 	}
 	fmt.Println("\n\nResponse:", string(resp))
 
+	resp, err = cloud.GetCloudStatus()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
+
 	cloud.BasicAuth = &cloudsigmalib.BasicAuth{login.Username, login.Password}
+
+	resp, err = cloud.GetCapabilities()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
+
 	resp, err = cloud.GetBalance()
 	if err != nil {
 		fmt.Println(err)

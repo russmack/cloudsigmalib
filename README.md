@@ -57,6 +57,8 @@ go run main.go
 - [X] Burst Usage
 - [X] Locations
 - [X] Balance
+- [X] Cloud Status
+- [X] Capabilities
 
 ## License
 BSD 3-Clause: [LICENSE.txt](LICENSE.txt)
