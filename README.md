@@ -49,6 +49,10 @@ go run main.go
 
 - [X] Servers [List, Create, Delete, Start, Stop, Shutdown]
 - [X] Drives [List, Create, Delete]
+- [X] VLANs
+- [X] IPs
+- [X] ACLs
+- [X] Tags
 - [X] Current Usage
 - [X] Burst Usage
 - [X] Locations

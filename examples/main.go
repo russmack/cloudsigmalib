@@ -94,4 +94,20 @@ func main() {
 		return
 	}
 	fmt.Println("\n\nResponse:", string(resp))
+
+	acls := cloud.NewACLs()
+	resp, err = acls.List()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
+
+	tags := cloud.NewTags()
+	resp, err = tags.List()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
 }

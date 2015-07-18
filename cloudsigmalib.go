@@ -259,3 +259,35 @@ func (i *IPs) List() ([]byte, error) {
 	}
 	return cloud.sendRequest(args)
 }
+
+type ACLs struct{}
+
+func (c *Cloud) NewACLs() *ACLs {
+	return &ACLs{}
+}
+
+func (a *ACLs) List() ([]byte, error) {
+	cs := cloudsigma.NewAcls()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+type Tags struct{}
+
+func (c *Cloud) NewTags() *Tags {
+	return &Tags{}
+}
+
+func (a *Tags) List() ([]byte, error) {
+	cs := cloudsigma.NewTags()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
