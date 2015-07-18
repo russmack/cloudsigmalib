@@ -61,4 +61,12 @@ func main() {
 		return
 	}
 	fmt.Println("\n\nResponse:", string(resp))
+
+	burstUsage := cloud.NewBurstUsage()
+	resp, err = burstUsage.List()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
 }

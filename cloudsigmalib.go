@@ -211,3 +211,19 @@ func (u *CurrentUsage) List() ([]byte, error) {
 	}
 	return cloud.sendRequest(args)
 }
+
+type BurstUsage struct{}
+
+func (c *Cloud) NewBurstUsage() *BurstUsage {
+	return &BurstUsage{}
+}
+
+func (u *BurstUsage) List() ([]byte, error) {
+	cs := cloudsigma.NewBurstUsage()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
