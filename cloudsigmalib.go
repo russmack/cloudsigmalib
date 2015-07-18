@@ -227,3 +227,35 @@ func (u *BurstUsage) List() ([]byte, error) {
 	}
 	return cloud.sendRequest(args)
 }
+
+type VLANs struct{}
+
+func (c *Cloud) NewVLANs() *VLANs {
+	return &VLANs{}
+}
+
+func (v *VLANs) List() ([]byte, error) {
+	cs := cloudsigma.NewVlans()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+type IPs struct{}
+
+func (c *Cloud) NewIPs() *IPs {
+	return &IPs{}
+}
+
+func (i *IPs) List() ([]byte, error) {
+	cs := cloudsigma.NewIps()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}

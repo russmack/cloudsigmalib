@@ -78,4 +78,20 @@ func main() {
 		return
 	}
 	fmt.Println("\n\nResponse:", string(resp))
+
+	vlans := cloud.NewVLANs()
+	resp, err = vlans.List()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
+
+	ips := cloud.NewIPs()
+	resp, err = ips.List()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
 }
