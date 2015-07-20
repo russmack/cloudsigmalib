@@ -311,3 +311,19 @@ func (a *Tags) List() ([]byte, error) {
 	}
 	return cloud.sendRequest(args)
 }
+
+type NotificationContacts struct{}
+
+func (c *Cloud) NewNotificationContacts() *NotificationContacts {
+	return &NotificationContacts{}
+}
+
+func (a *NotificationContacts) List() ([]byte, error) {
+	cs := cloudsigma.NewNotificationContacts()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}

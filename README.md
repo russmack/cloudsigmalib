@@ -2,7 +2,7 @@
 
 A simple, clean wrapper api for the cloudsigma core project.
 
-![Progress](http://progressed.io/bar/5?title=underway)
+![Progress](http://progressed.io/bar/10?title=underway)
 [![Build Status](https://travis-ci.org/russmack/cloudsigmalib.svg?branch=master)](https://travis-ci.org/russmack/cloudsigmalib)
 
 ---
@@ -59,6 +59,7 @@ go run main.go
 - [X] Balance
 - [X] Cloud Status
 - [X] Capabilities
+- [X] Notification Contacts
 
 ## License
 BSD 3-Clause: [LICENSE.txt](LICENSE.txt)

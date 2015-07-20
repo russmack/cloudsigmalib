@@ -125,4 +125,12 @@ func main() {
 		return
 	}
 	fmt.Println("\n\nResponse:", string(resp))
+
+	notificationContacts := cloud.NewNotificationContacts()
+	resp, err = notificationContacts.List()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
 }
