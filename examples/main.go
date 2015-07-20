@@ -141,4 +141,12 @@ func main() {
 		return
 	}
 	fmt.Println("\n\nResponse:", string(resp))
+
+	dailyBurstUsage := cloud.NewDailyBurstUsage()
+	resp, err = dailyBurstUsage.List()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
 }

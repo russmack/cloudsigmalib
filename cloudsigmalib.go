@@ -248,6 +248,22 @@ func (u *BurstUsage) List() ([]byte, error) {
 	return cloud.sendRequest(args)
 }
 
+type DailyBurstUsage struct{}
+
+func (c *Cloud) NewDailyBurstUsage() *DailyBurstUsage {
+	return &DailyBurstUsage{}
+}
+
+func (u *DailyBurstUsage) List() ([]byte, error) {
+	cs := cloudsigma.NewDailyBurstUsage()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
 type VLANs struct{}
 
 func (c *Cloud) NewVLANs() *VLANs {

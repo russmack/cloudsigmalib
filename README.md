@@ -55,6 +55,7 @@ go run main.go
 - [X] Tags
 - [X] Current Usage
 - [X] Burst Usage
+- [X] Daily Burst Usage
 - [X] Locations
 - [X] Balance
 - [X] Cloud Status
