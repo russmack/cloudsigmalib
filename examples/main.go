@@ -133,4 +133,12 @@ func main() {
 		return
 	}
 	fmt.Println("\n\nResponse:", string(resp))
+
+	notificationPrefs := cloud.NewNotificationPreferences()
+	resp, err = notificationPrefs.List()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
 }

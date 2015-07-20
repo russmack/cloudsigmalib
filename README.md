@@ -60,6 +60,7 @@ go run main.go
 - [X] Cloud Status
 - [X] Capabilities
 - [X] Notification Contacts
+- [X] Notification Preferences
 
 ## License
 BSD 3-Clause: [LICENSE.txt](LICENSE.txt)

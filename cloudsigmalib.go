@@ -327,3 +327,19 @@ func (a *NotificationContacts) List() ([]byte, error) {
 	}
 	return cloud.sendRequest(args)
 }
+
+type NotificationPreferences struct{}
+
+func (c *Cloud) NewNotificationPreferences() *NotificationPreferences {
+	return &NotificationPreferences{}
+}
+
+func (a *NotificationPreferences) List() ([]byte, error) {
+	cs := cloudsigma.NewNotificationPreferences()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
