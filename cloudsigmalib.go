@@ -359,3 +359,44 @@ func (a *NotificationPreferences) List() ([]byte, error) {
 	}
 	return cloud.sendRequest(args)
 }
+
+type Snapshots struct{}
+type Snapshot struct{}
+
+func (c *Cloud) NewSnapshots() *Snapshots {
+	return &Snapshots{}
+}
+
+func (c *Cloud) NewSnapshot() *Snapshot {
+	return &Snapshot{}
+}
+
+func (s *Snapshots) List() ([]byte, error) {
+	cs := cloudsigma.NewSnapshots()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+func (s *Snapshot) List(uuid string) ([]byte, error) {
+	cs := cloudsigma.NewSnapshots()
+	args := cs.NewGet(uuid)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
+func (s *Snapshot) Delete(uuid string) ([]byte, error) {
+	cs := cloudsigma.NewSnapshots()
+	args := cs.NewDelete(uuid)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
