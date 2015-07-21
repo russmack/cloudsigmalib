@@ -53,7 +53,7 @@ go run main.go
 - [X] IPs
 - [X] ACLs
 - [X] Tags
-- [X] Snapshots [List, list single, delete]
+- [X] Snapshots [List, list single, create, delete]
 - [X] Current Usage
 - [X] Burst Usage
 - [X] Daily Burst Usage

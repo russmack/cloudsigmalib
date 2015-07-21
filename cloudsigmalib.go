@@ -391,6 +391,17 @@ func (s *Snapshot) List(uuid string) ([]byte, error) {
 	return cloud.sendRequest(args)
 }
 
+func (s *Snapshot) Create(driveUuid string, name string) ([]byte, error) {
+	o := cloudsigma.SnapshotRequest{Drive: driveUuid, Name: name}
+	cs := cloudsigma.NewSnapshots()
+	args := cs.NewCreate(o)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
+
 func (s *Snapshot) Delete(uuid string) ([]byte, error) {
 	cs := cloudsigma.NewSnapshots()
 	args := cs.NewDelete(uuid)
