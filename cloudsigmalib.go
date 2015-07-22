@@ -344,6 +344,18 @@ func (a *NotificationContacts) List() ([]byte, error) {
 	return cloud.sendRequest(args)
 }
 
+func (a *NotificationContacts) Create(email string, name string, phone string) ([]byte, error) {
+	o := []cloudsigma.ContactRequest{{Email: email, Name: name, Phone: phone}}
+	cs := cloudsigma.NewNotificationContacts()
+	args := cs.NewCreate(o)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		e := errors.New(err.Error() + " Ensure phone number starts with a +.")
+		return nil, e
+	}
+	return cloud.sendRequest(args)
+}
+
 type NotificationPreferences struct{}
 
 func (c *Cloud) NewNotificationPreferences() *NotificationPreferences {

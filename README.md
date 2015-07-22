@@ -61,7 +61,7 @@ go run main.go
 - [X] Balance
 - [X] Cloud Status
 - [X] Capabilities
-- [X] Notification Contacts
+- [X] Notification Contacts [list, create]
 - [X] Notification Preferences
 
 ## License

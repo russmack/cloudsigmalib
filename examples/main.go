@@ -126,6 +126,16 @@ func main() {
 	}
 	fmt.Println("\n\nResponse:", string(resp))
 
+	/*
+		notificationContactsCreator := cloud.NewNotificationContacts()
+		resp, err = notificationContactsCreator.Create("my@testemail.com", "MyName Not", "+11235554567")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Println("\n\nResponse:", string(resp))
+	*/
+
 	notificationContacts := cloud.NewNotificationContacts()
 	resp, err = notificationContacts.List()
 	if err != nil {
