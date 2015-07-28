@@ -63,6 +63,7 @@ go run main.go
 - [X] Capabilities
 - [X] Notification Contacts [list, create]
 - [X] Notification Preferences
+- [X] Keypairs
 
 ## License
 BSD 3-Clause: [LICENSE.txt](LICENSE.txt)

@@ -52,6 +52,14 @@ func main() {
 	}
 	fmt.Println("\n\nResponse:", string(resp))
 
+	keypairs := cloud.NewKeypairs()
+	resp, err = keypairs.List()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
+
 	servers := cloud.NewServers()
 	resp, err = servers.List()
 	if err != nil {

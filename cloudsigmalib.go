@@ -423,3 +423,19 @@ func (s *Snapshot) Delete(uuid string) ([]byte, error) {
 	}
 	return cloud.sendRequest(args)
 }
+
+type Keypairs struct{}
+
+func (c *Cloud) NewKeypairs() *Keypairs {
+	return &Keypairs{}
+}
+
+func (s *Keypairs) List() ([]byte, error) {
+	cs := cloudsigma.NewKeypairs()
+	args := cs.NewList()
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendRequest(args)
+}
