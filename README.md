@@ -59,6 +59,7 @@ go run main.go
 - [X] Daily Burst Usage
 - [X] Locations
 - [X] Balance
+- [X] Transactions
 - [X] Profile
 - [X] Cloud Status
 - [X] Capabilities

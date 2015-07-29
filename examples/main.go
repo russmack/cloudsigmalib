@@ -59,7 +59,12 @@ func main() {
 	}
 	fmt.Println("\n\nResponse:", string(resp))
 
-	return
+	resp, err = cloud.GetTransactions()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
 
 	keypairs := cloud.NewKeypairs()
 	resp, err = keypairs.List()
