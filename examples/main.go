@@ -52,6 +52,13 @@ func main() {
 	}
 	fmt.Println("\n\nResponse:", string(resp))
 
+	resp, err = cloud.GetSubscriptions()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
+
 	resp, err = cloud.GetProfile()
 	if err != nil {
 		fmt.Println(err)

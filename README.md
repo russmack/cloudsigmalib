@@ -60,6 +60,7 @@ go run main.go
 - [X] Locations
 - [X] Balance
 - [X] Transactions
+- [X] Subscriptions
 - [X] Profile
 - [X] Cloud Status
 - [X] Capabilities
