@@ -117,6 +117,16 @@ func (c *Cloud) GetSubscriptions() ([]byte, error) {
 	return c.sendRequest(args)
 }
 
+func (c *Cloud) GetLicenses() ([]byte, error) {
+	o := cloudsigma.NewLicenses()
+	args := o.NewList()
+	args, err := c.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return c.sendRequest(args)
+}
+
 func (c *Cloud) GetProfile() ([]byte, error) {
 	o := cloudsigma.NewProfile()
 	args := o.NewList()

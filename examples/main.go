@@ -73,6 +73,13 @@ func main() {
 	}
 	fmt.Println("\n\nResponse:", string(resp))
 
+	resp, err = cloud.GetLicenses()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
+
 	keypairs := cloud.NewKeypairs()
 	resp, err = keypairs.List()
 	if err != nil {
