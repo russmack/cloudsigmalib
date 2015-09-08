@@ -39,6 +39,16 @@ func (c *Cloud) sendRequest(args *cloudsigma.Args) ([]byte, error) {
 	return resp, nil
 }
 
+func (c *Cloud) sendDownloadRequest(args *cloudsigma.Args) ([]byte, error) {
+	client := &cloudsigma.Client{}
+	resp, err := client.Download(nil, args)
+	if err != nil {
+		fmt.Printf("Error calling client. %s", err)
+		return nil, err
+	}
+	return resp, nil
+}
+
 func (c *Cloud) setArgs(args *cloudsigma.Args) (*cloudsigma.Args, error) {
 	if args.RequiresAuth && c.BasicAuth == nil {
 		return nil, errors.New("BasicAuth must not be nil.")
@@ -254,6 +264,22 @@ func (s *Drive) Delete(uuid string) ([]byte, error) {
 		return nil, err
 	}
 	return cloud.sendRequest(args)
+}
+
+type Image struct{}
+
+func (c *Cloud) NewImage() *Image {
+	return &Image{}
+}
+
+func (o *Image) Download(uuid string, filename string) ([]byte, error) {
+	cs := cloudsigma.NewImages()
+	args := cs.NewDownload(uuid, filename)
+	args, err := cloud.setArgs(args)
+	if err != nil {
+		return nil, err
+	}
+	return cloud.sendDownloadRequest(args)
 }
 
 type CurrentUsage struct{}

@@ -52,6 +52,17 @@ func main() {
 	}
 	fmt.Println("\n\nResponse:", string(resp))
 
+	img := cloud.NewImage()
+	uuid := "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+	resp, err = img.Download(uuid, "MyDownloadedImage.img")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("\n\nResponse:", string(resp))
+
+	return
+
 	resp, err = cloud.GetSubscriptions()
 	if err != nil {
 		fmt.Println(err)
