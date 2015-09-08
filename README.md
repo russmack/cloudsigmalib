@@ -2,11 +2,10 @@
 
 A simple, clean wrapper api for the cloudsigma core project.
 
-![Progress](http://progressed.io/bar/10?title=underway)
 [![Build Status](https://travis-ci.org/russmack/cloudsigmalib.svg?branch=master)](https://travis-ci.org/russmack/cloudsigmalib)
 
 ---
-#### Status: underway.
+#### Status: Beta.
 ---
 
 ## Usage
@@ -54,6 +53,7 @@ go run main.go
 - [X] ACLs
 - [X] Tags
 - [X] Snapshots [List, list single, create, delete]
+- [X] Images [Download]
 - [X] Current Usage
 - [X] Burst Usage
 - [X] Daily Burst Usage
